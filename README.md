@@ -188,6 +188,15 @@ Where the flyer and the inquiry form disagreed on flavors, the inquiry form
 is authoritative: it is the list the business actually books from, so
 Blueberry and Cherry from the flyer are deliberately not on the site.
 
+### Asset caching
+
+Every `assets/` URL in the HTML is written with a `?v=` content hash by
+`tools/build.py`. This matters: Netlify serves images with a one year
+immutable cache, so a stable filename would pin visitors to whatever copy
+their browser downloaded first. That is what happened twice during the
+build, once with an old stylesheet and once with an old logo. Do not remove
+the stamping, and do not hand-write asset URLs into the HTML.
+
 ### Logo and icons
 
 The header logo, favicons, touch icon and social share image are all

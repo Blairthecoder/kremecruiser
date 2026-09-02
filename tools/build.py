@@ -14,20 +14,39 @@ SITE_URL = "https://kreme-cruiser.netlify.app"
 BRAND = "Kreme Cruiser"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+_VERSION_CACHE = {}
+
+
 def _asset_version(relpath):
     """Content hash for a cache-busted asset URL.
 
-    assets/* is served with a one year immutable cache, so a stable URL
-    would pin visitors to whatever copy they downloaded first. Hashing the
-    URL means new content is always a new URL.
+    Everything under assets/ is served with a long cache. A stable URL
+    would therefore pin visitors to whatever copy they downloaded first,
+    which is how a stale stylesheet and an out of date logo both reached
+    production. Hashing the URL means changed content is a new URL.
     """
-    full = os.path.join(ROOT, relpath)
-    with open(full, "rb") as fh:
-        return hashlib.md5(fh.read()).hexdigest()[:10]
+    if relpath not in _VERSION_CACHE:
+        full = os.path.join(ROOT, relpath)
+        with open(full, "rb") as fh:
+            _VERSION_CACHE[relpath] = hashlib.md5(fh.read()).hexdigest()[:10]
+    return _VERSION_CACHE[relpath]
 
 
-CSS_V = _asset_version("assets/css/style.css")
-JS_V = _asset_version("assets/js/site.js")
+_ASSET_REF = re.compile(r'(?<=["\s])(assets/[A-Za-z0-9_@./-]+)')
+
+
+def _stamp_assets(html):
+    """Append a content hash to every local asset URL in the page."""
+
+    def stamp(match):
+        path = match.group(1)
+        full = os.path.join(ROOT, path)
+        if not os.path.isfile(full):
+            return path
+        return "%s?v=%s" % (path, _asset_version(path))
+
+    return _ASSET_REF.sub(stamp, html)
+
 
 NAV = [
     ("index.html", "Home"),
@@ -264,7 +283,7 @@ PAGE = """<!doctype html>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" media="print" onload="this.media='all';this.onload=null">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"></noscript>
-<link rel="stylesheet" href="assets/css/style.css?v={css_v}">
+<link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -279,7 +298,7 @@ PAGE = """<!doctype html>
 {body}
 </main>
 {footer}
-<script src="assets/js/site.js?v={js_v}"></script>
+<script src="assets/js/site.js"></script>
 </body>
 </html>
 """
@@ -301,14 +320,13 @@ def build(slug, title, description, body, trail=None, extra_schema=(), robots="i
         robots=robots,
         org=ORG_SCHEMA,
         extra_schema=extra,
-        css_v=CSS_V,
-        js_v=JS_V,
         header=header(slug),
         crumbs=crumb_html,
         body=body,
         footer=FOOTER,
     )
     html = _title_case_headings(html)
+    html = _stamp_assets(html)
     with open(os.path.join(ROOT, slug), "w", encoding="utf-8") as fh:
         fh.write(html)
     return slug
