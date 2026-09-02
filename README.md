@@ -11,8 +11,7 @@ These five items are the only things blocking a live launch. Everything else is 
 
 | # | Item | Where | Why it matters |
 |---|------|-------|----------------|
-| 1 | Replace the logo artwork | `assets/img/logo-source.png`, then `python3 tools/make_logo.py` | The current header logo was extracted from a photo of the cart wrap, so it is soft. Dropping in the real logo file and running that one command fixes it. |
-| 2 | Add the Facebook page URL | `assets/js/site.js` | The link stays hidden until a URL is added. Phone, email and Instagram are already set. |
+| 1 | Add the Facebook page URL | `assets/js/site.js` | The link stays hidden until a URL is added. Phone, email and Instagram are already set. |
 | 3 | Confirm the real domain | search and replace `https://www.kremecruiser.com` | Used in canonicals, Open Graph tags, `robots.txt` and `sitemap.xml`. |
 | 4 | Confirm the service area list | `tools/build.py` (`AREAS`), then rebuild | The current list is an assumption based on where the cart has been photographed. Correct it before indexing. |
 | 5 | Create a Google Business Profile | Google | Highest impact single action for this business. See the SEO notes below. |
@@ -184,10 +183,18 @@ Taken from the owner's own materials, not invented:
 
 The inquiry form at `contact.html` mirrors the field set of the business's
 Jotform catering inquiry, so submissions arrive with the same information.
-Two things could not be read off the screenshot and are placeholders worth
-confirming: the **Service style** dropdown options, and whether the flavor
-list should also include Blueberry and Cherry, which appear on the flyer but
-not on the inquiry form.
+The Service style and Event type dropdowns use the business's own options.
+One item is still worth confirming: whether the flavor list should also
+include Blueberry and Cherry, which appear on the flyer but not on the
+inquiry form.
+
+### Logo and icons
+
+The header logo, favicons, touch icon and social share image are all
+generated from `assets/img/logo-source.png`, which is the real logo with its
+background removed. To change the artwork, replace that file and run:
+
+    python3 tools/make_logo.py
 
 ## Research notes
 

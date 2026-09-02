@@ -160,8 +160,8 @@ home_body = f"""  <section class="hero">
       <div class="photo-strip">
         <figure>{picture("daycare-shaved-ice-party", "Children seated around a table at a daycare eating cups of shaved ice", widths=(600, 1000), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Summer camp treat day</figcaption></figure>
         <figure>{picture("kreme-cruiser-team-event", "Two Kreme Cruiser servers in matching shirts holding cups of shaved ice in front of the cart at an indoor event", widths=(600, 1000), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Indoor community event</figcaption></figure>
-        <figure>{picture("cart-menu-board", "The Kreme Cruiser cart and A frame flavor menu set up outside a school building", widths=(600, 1000), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>School field day</figcaption></figure>
-        <figure>{picture("sour-apple-orange-shaved-ice", "A cup of orange and green shaved ice sitting on the Kreme Cruiser cart", widths=(600, 1000), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Mix and match cup</figcaption></figure>
+        <figure>{picture("kids-school-event", "Two boys holding cups of water ice in front of the Kreme Cruiser cart at a school event", widths=(600, 725), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>School celebration</figcaption></figure>
+        <figure>{picture("cart-neighborhood-ride", "The Kreme Cruiser cart being pedaled down a residential street", widths=(546,), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Rolling into the neighborhood</figcaption></figure>
       </div>
       <div class="btn-row mt-32" style="justify-content:center;">
         <a class="btn btn-secondary" href="gallery.html">See more photos</a>
@@ -299,7 +299,7 @@ schools_body = f"""  <section class="page-head">
           <p>Before your event we agree on how many groups are coming, how long each group has and where they line up. Then we run rotations. Servers pre-portion cups during the gaps so the next class walks up to a cart that is already ready.</p>
           <p>Cups are handed out one at a time with a spoon and a napkin. Nothing needs to be plugged in, nothing needs to be carried through a hallway, and nothing gets left behind on the floor.</p>
         </div>
-        <div>{picture("daycare-shaved-ice-party", "Young children sitting around a long table at a daycare eating cups of Kreme Cruiser shaved ice", sizes="(max-width: 860px) 90vw, 500px")}</div>
+        <div>{picture("kids-lined-up-at-cart", "Children lined up at the Kreme Cruiser cart at a school while a server hands out a cup", widths=(541,), sizes="(max-width: 860px) 90vw, 500px")}</div>
       </div>
     </div>
   </section>
@@ -347,7 +347,7 @@ birthday_body = f"""  <section class="page-head">
   <section class="section">
     <div class="wrap">
       <div class="split">
-        <div>{picture("rainbow-shaved-ice", "A rainbow shaved ice cup with red, yellow, green and blue layers", sizes="(max-width: 860px) 90vw, 500px")}</div>
+        <div>{picture("guests-ordering-at-cart", "Guests standing at the Kreme Cruiser cart under its umbrella at an outdoor party", widths=(547,), sizes="(max-width: 860px) 90vw, 500px")}</div>
         <div>
           <h2>It is the dessert and the decor</h2>
           <p>The cart is bright teal with the umbrella up and the flavor board out front. Parents take photos of it before the first cup is served. You do not need a separate dessert table, a cooler of popsicles or a backup plan for melted ice cream.</p>
@@ -410,7 +410,7 @@ community_body = f"""  <section class="page-head">
           <p><strong>Timed open service.</strong> We serve continuously for an agreed window. Good for festivals and grand openings where you cannot predict the count but you can predict the hours.</p>
           <p>Either way we bring the cart, the umbrella, the menu board and the servers. You get a bright, photographable setup that draws people toward whatever you are actually promoting.</p>
         </div>
-        <div>{picture("kreme-cruiser-team-event", "Two Kreme Cruiser servers in branded shirts standing with the cart at an indoor community event", sizes="(max-width: 860px) 90vw, 500px")}</div>
+        <div>{picture("serving-community-event", "A Kreme Cruiser server scooping water ice for families at an outdoor community event", widths=(600,722), sizes="(max-width: 860px) 90vw, 500px")}</div>
       </div>
     </div>
   </section>
@@ -600,36 +600,52 @@ gallery_body = f"""  <section class="page-head">
     <div class="wrap narrow">
       <span class="eyebrow">Gallery</span>
       <h1>The cart, the flavors and the events</h1>
-      <p class="lede">Real photos from real stops. Schools, camps, indoor halls and community events.</p>
+      <p class="lede">Real photos from real stops. Schools, camps, neighborhoods, indoor halls and community events.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="grid grid-2">
-        <figure style="margin:0;">
-          {picture("cart-menu-board", "The Kreme Cruiser shaved ice cart parked on grass outside a school with its teal umbrella up and the flavor menu board beside it", sizes="(max-width: 860px) 90vw, 520px")}
-          <figcaption style="margin-top:12px;color:var(--ink-soft);">The full setup: cart, shade umbrella and A frame flavor board. This is a school field day.</figcaption>
+      <div class="gallery-grid">
+        <figure>
+          {picture("cart-menu-board", "The Kreme Cruiser cart parked on grass outside a school with its teal umbrella up and the flavor menu board beside it", sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>The full setup: cart, shade umbrella and A frame flavor board. This is a school field day.</figcaption>
         </figure>
-        <figure style="margin:0;">
-          {picture("daycare-shaved-ice-party", "Children seated around a table indoors at a daycare eating cups of shaved ice", sizes="(max-width: 860px) 90vw, 520px")}
-          <figcaption style="margin-top:12px;color:var(--ink-soft);">Camp week at a daycare. Cups are handed out at the table so the room stays calm.</figcaption>
+        <figure>
+          {picture("cart-neighborhood-ride", "A Kreme Cruiser rider pedaling the cart with its teal umbrella down a residential street", widths=(546,), sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>It really does pedal. The cart rides into the neighborhood under its own power.</figcaption>
         </figure>
-        <figure style="margin:0;">
-          {picture("kreme-cruiser-team-event", "Two Kreme Cruiser servers in branded shirts holding shaved ice cups in front of the cart at an indoor event", sizes="(max-width: 860px) 90vw, 520px")}
-          <figcaption style="margin-top:12px;color:var(--ink-soft);">Indoor community event. The cart rolls straight into the hall, no generator required.</figcaption>
+        <figure>
+          {picture("kids-lined-up-at-cart", "A line of children waiting at the Kreme Cruiser cart outside a building while a server hands out a cup", widths=(541,), sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>A line moves fast when servers portion cups between groups.</figcaption>
         </figure>
-        <figure style="margin:0;">
-          {picture("rainbow-shaved-ice", "A cup of rainbow shaved ice layered in red, yellow, green and blue", sizes="(max-width: 860px) 90vw, 520px")}
-          <figcaption style="margin-top:12px;color:var(--ink-soft);">The Rainbow. The most requested cup at nearly every kids event we work.</figcaption>
+        <figure>
+          {picture("kids-school-event", "Two boys holding cups of water ice in front of the Kreme Cruiser cart at an outdoor school event", widths=(600,725), sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>School celebration. The cart sits alongside the other stalls without needing power.</figcaption>
         </figure>
-        <figure style="margin:0;">
-          {picture("sour-apple-orange-shaved-ice", "A cup of orange and green shaved ice resting on the Kreme Cruiser cart", sizes="(max-width: 860px) 90vw, 520px")}
-          <figcaption style="margin-top:12px;color:var(--ink-soft);">A mix and match cup. Two flavors, one scoop, no waiting on a second line.</figcaption>
+        <figure>
+          {picture("serving-community-event", "A Kreme Cruiser server scooping water ice for families waiting at an outdoor community event", widths=(600,722), sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>Community event service, with families lined up along the lot.</figcaption>
         </figure>
-        <figure style="margin:0;">
-          <img src="assets/img/flavor-menu-sign-440.jpg" alt="Close view of the Kreme Cruiser flavor menu board showing single flavors and mix and match flavors" loading="lazy" decoding="async" style="border-radius:16px;box-shadow:var(--shadow);width:100%;aspect-ratio:3/4;object-fit:cover;">
-          <figcaption style="margin-top:12px;color:var(--ink-soft);">The menu board guests read at the cart. Singles on the left, combos on the right.</figcaption>
+        <figure>
+          {picture("guests-ordering-at-cart", "Two guests standing at the Kreme Cruiser cart under its umbrella at an outdoor event", widths=(547,), sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>Adults order as often as the kids do.</figcaption>
+        </figure>
+        <figure>
+          {picture("daycare-shaved-ice-party", "Children seated around a table indoors at a daycare eating cups of water ice", sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>Camp week at a daycare. Cups are handed out at the table so the room stays calm.</figcaption>
+        </figure>
+        <figure>
+          {picture("kreme-cruiser-team-event", "Two Kreme Cruiser servers in branded shirts holding cups in front of the cart at an indoor event", sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>Indoor community event. The cart rolls straight into the hall.</figcaption>
+        </figure>
+        <figure>
+          {picture("rainbow-shaved-ice", "A cup of rainbow water ice layered in red, yellow, green and blue", sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>The Rainbow. The most requested cup at nearly every kids event we work.</figcaption>
+        </figure>
+        <figure>
+          {picture("sour-apple-orange-shaved-ice", "A cup of orange and green water ice resting on the Kreme Cruiser cart", sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 340px")}
+          <figcaption>Two flavors in one cup. Just ask your server.</figcaption>
         </figure>
       </div>
     </div>
@@ -698,14 +714,10 @@ faq_body = f"""  <section class="page-head">
 """
 
 # ----------------------------------------------------------------- CONTACT
-EVENT_TYPES = ["Birthday party", "Corporate event", "School celebration",
-               "Pop-up or community event", "Wedding", "Private gathering",
-               "Baby shower", "Gender reveal", "Sporting event", "Other"]
+EVENT_TYPES = ["School/Campus Event", "Birthday Party/Private Celebration",
+               "Corporate/Community Event", "Other"]
 
-SERVICE_STYLES = ["On-site service with staffed setup",
-                  "Timed open service for a set window",
-                  "Rotation service for large groups",
-                  "Not sure yet, please advise"]
+SERVICE_STYLES = ["On Site Serving Experience", "Pre-Packaged Drop-Off"]
 
 STATES = ["TX", "Other"]
 

@@ -46,7 +46,7 @@ AREAS = [
 LOGO = """<a class="logo" href="index.html">
         <img src="assets/img/kreme-cruiser-logo.png"
              srcset="assets/img/kreme-cruiser-logo.png 1x, assets/img/kreme-cruiser-logo@2x.png 2x, assets/img/kreme-cruiser-logo@3x.png 3x"
-             width="71" height="52" alt="Kreme Cruiser" decoding="async">
+             width="58" height="64" alt="Kreme Cruiser" decoding="async">
       </a>"""
 
 
@@ -236,7 +236,8 @@ PAGE = """<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <script type="application/ld+json">{org}</script>

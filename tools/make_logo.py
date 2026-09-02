@@ -17,7 +17,7 @@ import os
 import sys
 from PIL import Image, ImageFilter
 
-DISPLAY_H = 52                      # must match .logo img height in style.css
+DISPLAY_H = 64                      # must match .logo img height in style.css
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IMG = os.path.join(ROOT, "assets", "img")
 SOURCE = os.path.join(IMG, "logo-source.png")
