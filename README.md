@@ -11,8 +11,8 @@ These five items are the only things blocking a live launch. Everything else is 
 
 | # | Item | Where | Why it matters |
 |---|------|-------|----------------|
-| 1 | Add the phone number and email | `assets/js/site.js`, top of file | Right now every phone and email link is hidden site wide. Nothing fake ships, but nothing is clickable either. |
-| 2 | Add the Facebook page URL | `assets/js/site.js` | Same behavior. The link stays hidden until a URL is added. |
+| 1 | Replace the logo artwork | `assets/img/logo-source.png`, then `python3 tools/make_logo.py` | The current header logo was extracted from a photo of the cart wrap, so it is soft. Dropping in the real logo file and running that one command fixes it. |
+| 2 | Add the Facebook page URL | `assets/js/site.js` | The link stays hidden until a URL is added. Phone, email and Instagram are already set. |
 | 3 | Confirm the real domain | search and replace `https://www.kremecruiser.com` | Used in canonicals, Open Graph tags, `robots.txt` and `sitemap.xml`. |
 | 4 | Confirm the service area list | `tools/build.py` (`AREAS`), then rebuild | The current list is an assumption based on where the cart has been photographed. Correct it before indexing. |
 | 5 | Create a Google Business Profile | Google | Highest impact single action for this business. See the SEO notes below. |
@@ -169,6 +169,25 @@ Ranked by impact for a mobile service business in this market.
 11. Analytics. GA4 plus a conversion event on `thank-you.html`.
 
 ---
+
+## Business facts used on the site
+
+Taken from the owner's own materials, not invented:
+
+| Fact | Source |
+|------|--------|
+| Phone (713) 530-6835, info@kremecruiser.com | business flyer |
+| 17 water ice flavors | catering inquiry form |
+| Small cup $6, large cup $9 | catering inquiry form |
+| 50% non-refundable retainer secures a date | catering inquiry form |
+| Event types offered | business flyer |
+
+The inquiry form at `contact.html` mirrors the field set of the business's
+Jotform catering inquiry, so submissions arrive with the same information.
+Two things could not be read off the screenshot and are placeholders worth
+confirming: the **Service style** dropdown options, and whether the flavor
+list should also include Blueberry and Cherry, which appear on the flyer but
+not on the inquiry form.
 
 ## Research notes
 

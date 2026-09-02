@@ -29,31 +29,28 @@ def picture(name, alt, widths=(600, 1000, 1179), sizes="(max-width: 860px) 90vw,
             f'sizes="{sizes}" alt="{alt}" loading="{loading}" decoding="async">')
 
 
-SINGLES = [
-    ("Cherry", "#e2273f", "Classic red, the one kids ask for first"),
-    ("Rainbow", "linear-gradient(135deg,#e2273f 0%,#ffc629 35%,#3cba54 65%,#1a7ee0 100%)",
-     "Cherry, lemon, lime and blue raspberry layered in one cup"),
-    ("Blue Raspberry", "#1a7ee0", "Sweet, tart and it turns your tongue blue"),
-    ("Sour Apple", "#5cb832", "Green apple with a pucker at the end"),
-    ("Strawberry Lemonade", "#f2547d", "Strawberry with a squeeze of lemon"),
+FLAVORS = [
+    ("Pineapple", "#f5c518", "Sweet and tangy"),
+    ("Strawberry", "#e63950", "The classic red"),
     ("Mango", "#f79021", "Sweet tropical mango"),
+    ("Strawberry Lemonade", "#f2547d", "Strawberry with a squeeze of lemon"),
+    ("Peach", "#f8a06a", "Soft and summery"),
+    ("Fruit Punch", "#d6294e", "Mixed fruit, always a kid favorite"),
+    ("Blue Razz", "#1a7ee0", "Sweet, tart and it turns your tongue blue"),
+    ("Rainbow", "linear-gradient(135deg,#e2273f 0%,#ffc629 35%,#3cba54 65%,#1a7ee0 100%)",
+     "Layered colors in one cup, the most requested flavor"),
+    ("Watermelon", "linear-gradient(135deg,#ef5b6b 60%,#5cb832 60%)", "Cool and refreshing"),
+    ("Passion Fruit", "#f2a93b", "Bright and tangy"),
+    ("Lemon", "#f5e04a", "Sharp and clean"),
+    ("Orange Creamsicle", "#f79a3c", "Creamy orange, no dairy"),
+    ("Sour Apple", "#5cb832", "Green apple with a pucker at the end"),
+    ("Cotton Candy", "linear-gradient(135deg,#f49ac8 50%,#7cc9ec 50%)", "Tastes like the fair"),
     ("Pi&ntilde;a Colada", "#f6e7c4", "Pineapple and coconut, no alcohol"),
+    ("Black Cherry", "#8b1533", "Deeper and richer than regular cherry"),
+    ("Pistachio", "#a8c86a", "Nutty and different, for the grown ups"),
 ]
 
-MIXES = [
-    ("Cherry + Blue Raspberry", "linear-gradient(135deg,#e2273f 50%,#1a7ee0 50%)",
-     "Red and blue side by side, the most requested combo"),
-    ("Passionfruit + Peach", "linear-gradient(135deg,#f7b32b 50%,#f58a5a 50%)",
-     "Tangy passionfruit against soft peach"),
-    ("Cherry + Black Cherry", "linear-gradient(135deg,#e2273f 50%,#8b1533 50%)",
-     "Two cherries, one bright and one deep"),
-    ("Sour Apple + Cherry + Blue Raspberry", "linear-gradient(120deg,#5cb832 33%,#e2273f 33%,#e2273f 66%,#1a7ee0 66%)",
-     "Three stripes, three flavors, one cup"),
-    ("Orange Creamsicle + Pi&ntilde;a Colada", "linear-gradient(135deg,#f79021 50%,#f6e7c4 50%)",
-     "Creamy orange with pineapple and coconut"),
-    ("Mystery", "linear-gradient(135deg,#7a3ff2 0%,#14b6cf 100%)",
-     "Server's choice. Kids love the gamble"),
-]
+FLAVOR_NAMES = [n.replace("&ntilde;", "n") for n, _, _ in FLAVORS]
 
 
 def flavor_list(items):
@@ -457,34 +454,29 @@ flavor_schema = """{
   "name": "Kreme Cruiser Flavor Menu",
   "url": "%s/flavors.html",
   "hasMenuSection": [
-    {"@type":"MenuSection","name":"Single Flavors","hasMenuItem":[%s]},
-    {"@type":"MenuSection","name":"Mix and Match Flavors","hasMenuItem":[%s]}
+    {"@type":"MenuSection","name":"Water Ice Flavors","hasMenuItem":[%s]}
   ]
 }""" % (
     SITE_URL,
-    ",".join('{"@type":"MenuItem","name":"%s"}' % n.replace("&ntilde;", "n") for n, _, _ in SINGLES),
-    ",".join('{"@type":"MenuItem","name":"%s"}' % n.replace("&ntilde;", "n") for n, _, _ in MIXES),
+    ",".join('{"@type":"MenuItem","name":"%s"}' % n for n in FLAVOR_NAMES),
 )
 
 flavors_body = f"""  <section class="page-head">
     <div class="wrap narrow">
       <span class="eyebrow">Flavor Menu</span>
       <h1>Kreme Cruiser flavors</h1>
-      <p class="lede">Seven single flavors and six mix and match cups, all poured over freshly shaved ice. Every flavor on the cart is dairy free.</p>
+      <p class="lede">Seventeen flavors of handcrafted water ice, all shaved fresh at the cart. Everything on the menu is dairy free.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
       <div class="flavor-cols">
-        <div>
-          <h2>Single Flavors</h2>
-          {flavor_list(SINGLES)}
-        </div>
-        <div>
-          <h2>Mix &amp; Match</h2>
-          {flavor_list(MIXES)}
-        </div>
+        <div>{flavor_list(FLAVORS[:9])}</div>
+        <div>{flavor_list(FLAVORS[9:])}</div>
+      </div>
+      <div class="note mt-32">
+        <p class="mb-0"><strong>How many flavors come with your event?</strong> That depends on the package you book. Extra flavors beyond your package can be added for a small charge. Tell us which ones your guests want when you send your inquiry.</p>
       </div>
     </div>
   </section>
@@ -492,19 +484,18 @@ flavors_body = f"""  <section class="page-head">
   <section class="section section-shell">
     <div class="wrap">
       <div class="split">
-        <div>{picture("sour-apple-orange-shaved-ice", "A cup of orange and green mix and match shaved ice on the Kreme Cruiser cart", sizes="(max-width: 860px) 90vw, 500px")}</div>
+        <div>{picture("sour-apple-orange-shaved-ice", "A cup of orange and green water ice on the Kreme Cruiser cart", sizes="(max-width: 860px) 90vw, 500px")}</div>
         <div>
-          <h2>Shaved ice, not a snow cone</h2>
-          <p>A snow cone is crushed ice with syrup poured on top, which is why it runs out the bottom of the cone in about four minutes. Shaved ice comes off the block in fine ribbons that hold the flavor all the way through the cup.</p>
-          <p>That is why kids can carry a cup back to a table and it still tastes like the flavor they picked at the cart.</p>
+          <h2>Water ice, not a snow cone</h2>
+          <p>A snow cone is crushed ice with syrup poured on top, which is why it runs out the bottom of the cone in about four minutes. Ours is shaved fine and the flavor goes all the way through, so it still tastes like the flavor your guest picked when they get back to their table.</p>
           <h3 class="mt-32">Common questions about the flavors</h3>
           <ul>
             <li><strong>Dairy:</strong> none in any flavor, including Pi&ntilde;a Colada and Orange Creamsicle.</li>
             <li><strong>Alcohol:</strong> none. Pi&ntilde;a Colada is the flavor, not the drink.</li>
-            <li><strong>Nuts:</strong> the cart does not carry nut products.</li>
-            <li><strong>Mystery cup:</strong> the server picks the combination. It is a favorite with older kids.</li>
+            <li><strong>Cup sizes:</strong> small cups are $6 and large cups are $9.</li>
+            <li><strong>Mixing:</strong> ask your server to combine two flavors in one cup.</li>
           </ul>
-          <p>If you have a specific allergy question, send it with your booking request and we will give you a straight answer before you commit.</p>
+          <p>If you have a specific allergy question, send it with your inquiry and we will give you a straight answer before you commit.</p>
         </div>
       </div>
     </div>
@@ -514,7 +505,7 @@ flavors_body = f"""  <section class="page-head">
     <div class="wrap narrow center">
       <h2>The menu board that travels with the cart</h2>
       <p class="lede">Guests read this at the event, so nobody has to ask what is available.</p>
-      <img src="assets/img/flavor-menu-sign-440.jpg" alt="The Kreme Cruiser A frame menu board listing single flavors and mix and match flavors" loading="lazy" decoding="async" style="border-radius:16px;box-shadow:var(--shadow-lg);margin:32px auto 0;max-width:420px;">
+      <img src="assets/img/flavor-menu-sign-440.jpg" alt="The Kreme Cruiser A frame menu board listing the water ice flavors" loading="lazy" decoding="async" style="border-radius:16px;box-shadow:var(--shadow-lg);margin:32px auto 0;max-width:420px;">
     </div>
   </section>
 
@@ -707,70 +698,177 @@ faq_body = f"""  <section class="page-head">
 """
 
 # ----------------------------------------------------------------- CONTACT
-event_options = ["Birthday party", "School or daycare", "Church event",
-                 "Community or corporate", "HOA or neighborhood", "Something else"]
-option_html = "".join(f'<option value="{o}">{o}</option>' for o in event_options)
+EVENT_TYPES = ["Birthday party", "Corporate event", "School celebration",
+               "Pop-up or community event", "Wedding", "Private gathering",
+               "Baby shower", "Gender reveal", "Sporting event", "Other"]
+
+SERVICE_STYLES = ["On-site service with staffed setup",
+                  "Timed open service for a set window",
+                  "Rotation service for large groups",
+                  "Not sure yet, please advise"]
+
+STATES = ["TX", "Other"]
+
+flavor_boxes = "".join(
+    '<label class="check"><input type="checkbox" name="flavors" value="%s"> <span>%s</span></label>' % (n, d)
+    for n, d in zip(FLAVOR_NAMES, [f[0] for f in FLAVORS])
+)
 
 contact_body = f"""  <section class="page-head">
     <div class="wrap narrow">
-      <span class="eyebrow">Book the Cart</span>
-      <h1>Check your date</h1>
-      <p class="lede">Send the date, the location and roughly how many people you are feeding. We will confirm whether the cart is open and send you a quote.</p>
+      <span class="eyebrow">Catering Inquiry</span>
+      <h1>Kreme Cruiser catering inquiry</h1>
+      <p class="lede">Thanks for your interest in Kreme Cruiser. We serve handcrafted water ice at schools, corporate events, parties and community gatherings. Tell us about your event below and we will come back with availability and a custom quote.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="split" style="align-items:start;">
+      <div class="split split-form" style="align-items:start;">
         <div>
-          <form name="booking" method="POST" data-netlify="true" netlify-honeypot="company-website" action="thank-you.html">
-            <input type="hidden" name="form-name" value="booking">
+          <form name="catering-inquiry" method="POST" data-netlify="true" netlify-honeypot="company-website" action="thank-you.html" id="inquiry-form">
+            <input type="hidden" name="form-name" value="catering-inquiry">
             <p class="hp"><label>Do not fill this in <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
-            <div class="form-grid">
-              <div class="field">
-                <label for="name">Your name <span class="req" aria-hidden="true">*</span></label>
-                <input id="name" name="name" type="text" autocomplete="name" required>
+
+            <fieldset>
+              <legend>Your details</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="first-name">First name <span class="req" aria-hidden="true">*</span></label>
+                  <input id="first-name" name="first-name" type="text" autocomplete="given-name" required>
+                </div>
+                <div class="field">
+                  <label for="last-name">Last name <span class="req" aria-hidden="true">*</span></label>
+                  <input id="last-name" name="last-name" type="text" autocomplete="family-name" required>
+                </div>
+                <div class="field">
+                  <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                  <input id="email" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(000) 000-0000" required>
+                </div>
               </div>
-              <div class="field">
-                <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+            </fieldset>
+
+            <fieldset>
+              <legend>Event details</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="event-date">Date of event <span class="req" aria-hidden="true">*</span></label>
+                  <input id="event-date" name="event-date" type="date" required>
+                </div>
+                <div class="field">
+                  <label for="guests">Total number of guests <span class="req" aria-hidden="true">*</span></label>
+                  <input id="guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="Include adults" required>
+                </div>
+                <div class="field">
+                  <label for="start-time">Event start time <span class="req" aria-hidden="true">*</span></label>
+                  <input id="start-time" name="start-time" type="time" required>
+                </div>
+                <div class="field">
+                  <label for="end-time">Event end time <span class="req" aria-hidden="true">*</span></label>
+                  <input id="end-time" name="end-time" type="time" required>
+                </div>
+                <div class="field full">
+                  <label for="event-type">Event type <span class="req" aria-hidden="true">*</span></label>
+                  <select id="event-type" name="event-type" required>
+                    <option value="">Please select</option>
+                    {"".join(f'<option value="{t}">{t}</option>' for t in EVENT_TYPES)}
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="service-style">Service style <span class="req" aria-hidden="true">*</span></label>
+                  <select id="service-style" name="service-style" required>
+                    <option value="">Please select</option>
+                    {"".join(f'<option value="{t}">{t}</option>' for t in SERVICE_STYLES)}
+                  </select>
+                  <span class="hint">On-site service includes professional setup. Service upgrades may apply. Final pricing is provided with your custom quote.</span>
+                </div>
+              </div>
+
+              <fieldset class="choice-set">
+                <legend>This event is</legend>
+                <div class="choice-row">
+                  <label class="check"><input type="radio" name="venue" value="Indoors"> <span>Indoors</span></label>
+                  <label class="check"><input type="radio" name="venue" value="Outdoor"> <span>Outdoor</span></label>
+                  <label class="check"><input type="radio" name="venue" value="Both"> <span>Both</span></label>
+                </div>
+              </fieldset>
+            </fieldset>
+
+            <fieldset>
+              <legend>Address and event location</legend>
+              <div class="form-grid">
+                <div class="field full">
+                  <label for="street">Street address <span class="req" aria-hidden="true">*</span></label>
+                  <input id="street" name="street" type="text" autocomplete="address-line1" required>
+                </div>
+                <div class="field full">
+                  <label for="street2">Street address line 2</label>
+                  <input id="street2" name="street2" type="text" autocomplete="address-line2">
+                </div>
+                <div class="field">
+                  <label for="city">City <span class="req" aria-hidden="true">*</span></label>
+                  <input id="city" name="city" type="text" autocomplete="address-level2" required>
+                </div>
+                <div class="field">
+                  <label for="state">State <span class="req" aria-hidden="true">*</span></label>
+                  <input id="state" name="state" type="text" autocomplete="address-level1" value="TX" required>
+                </div>
+                <div class="field">
+                  <label for="zip">Postal / zip code <span class="req" aria-hidden="true">*</span></label>
+                  <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" required>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Flavors and cups</legend>
+              <div class="field full">
+                <span class="label-text">Flavor options</span>
+                <span class="hint">Pick the ones you want at your event. The number of flavors included varies by package, and extra flavors can be added for a small charge.</span>
+                <div class="choice-grid">{flavor_boxes}</div>
+              </div>
+              <fieldset class="choice-set">
+                <legend>Select cup size</legend>
+                <div class="choice-row">
+                  <label class="check"><input type="radio" name="cup-size" value="Small cups $6"> <span>Small cups, $6</span></label>
+                  <label class="check"><input type="radio" name="cup-size" value="Large cups $9"> <span>Large cups, $9</span></label>
+                </div>
+              </fieldset>
+            </fieldset>
+
+            <fieldset>
+              <legend>Anything else</legend>
+              <div class="field full">
+                <label for="notes">Additional notes</label>
+                <textarea id="notes" name="notes" placeholder="Where the cart will park, gate width, allergies, rain plan, invoicing or vendor paperwork"></textarea>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Booking acknowledgment</legend>
+              <div class="field full">
+                <label class="check start"><input type="checkbox" name="retainer-ack" value="Acknowledged" required>
+                  <span>I understand that a 50% non-refundable retainer is required to secure my event date, and that events are not secured until the retainer is received. <span class="req" aria-hidden="true">*</span></span>
+                </label>
               </div>
               <div class="field full">
-                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-                <input id="email" name="email" type="email" autocomplete="email" required>
+                <label for="signature-name">Type your full name as your signature <span class="req" aria-hidden="true">*</span></label>
+                <input id="signature-name" name="signature-name" type="text" class="signature-input" placeholder="Your full name" required>
+                <span class="hint">Typing your name here acts as your signature on this inquiry.</span>
               </div>
-              <div class="field">
-                <label for="event-type">Type of event</label>
-                <select id="event-type" name="event-type">{option_html}</select>
-              </div>
-              <div class="field">
-                <label for="event-date">Event date</label>
-                <input id="event-date" name="event-date" type="date">
-              </div>
-              <div class="field">
-                <label for="guests">How many people</label>
-                <input id="guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="Include adults">
-              </div>
-              <div class="field">
-                <label for="start-time">Service start time</label>
-                <input id="start-time" name="start-time" type="time">
-              </div>
-              <div class="field full">
-                <label for="location">Event address or city</label>
-                <input id="location" name="location" type="text" placeholder="Street address, or at least the city">
-                <span class="hint">We serve Pearland, Manvel, Rosharon, Iowa Colony, Alvin and nearby communities.</span>
-              </div>
-              <div class="field full">
-                <label for="details">Anything else we should know</label>
-                <textarea id="details" name="details" placeholder="Indoor or outdoor, where the cart will park, gate width, allergies, rain plan, invoicing requirements"></textarea>
-              </div>
-              <div class="field full">
-                <button class="btn btn-primary" type="submit">Send Booking Request</button>
-                <span class="hint">We reply to booking requests as quickly as we can. Sending this does not lock in your date until we confirm it.</span>
-              </div>
+            </fieldset>
+
+            <div class="field full">
+              <button class="btn btn-primary" type="submit">Send Catering Inquiry</button>
+              <span class="hint">Sending this does not lock in your date. We will confirm availability and send your custom quote.</span>
             </div>
           </form>
         </div>
+
         <div>
           <div class="card">
             <h3>Other ways to reach us</h3>
@@ -783,14 +881,20 @@ contact_body = f"""  <section class="page-head">
             </ul>
           </div>
           <div class="card mt-32">
-            <h3>What speeds up your quote</h3>
-            <ul>
-              <li>The date, plus a rain date if you have one</li>
-              <li>The exact address, not just the city</li>
-              <li>Headcount including adults</li>
-              <li>How long you want service to run</li>
-              <li>Indoor or outdoor, and how the cart gets in</li>
-            </ul>
+            <h3>Cup pricing</h3>
+            <div class="table-wrap">
+              <table>
+                <tbody>
+                  <tr><td>Small cup</td><td><strong>$6</strong></td></tr>
+                  <tr><td>Large cup</td><td><strong>$9</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="margin-top:14px;">Event pricing depends on your guest count, service window and location. Your custom quote comes back after we review your inquiry.</p>
+          </div>
+          <div class="card mt-32">
+            <h3>Securing your date</h3>
+            <p>A 50% non-refundable retainer holds your event date. Until that retainer is received, the date stays open to other bookings.</p>
           </div>
           <div class="card mt-32">
             <h3>Serving area</h3>

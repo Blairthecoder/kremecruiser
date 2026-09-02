@@ -46,7 +46,7 @@ AREAS = [
 LOGO = """<a class="logo" href="index.html">
         <img src="assets/img/kreme-cruiser-logo.png"
              srcset="assets/img/kreme-cruiser-logo.png 1x, assets/img/kreme-cruiser-logo@2x.png 2x, assets/img/kreme-cruiser-logo@3x.png 3x"
-             width="91" height="56" alt="Kreme Cruiser" decoding="async">
+             width="71" height="52" alt="Kreme Cruiser" decoding="async">
       </a>"""
 
 
