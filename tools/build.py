@@ -43,14 +43,10 @@ AREAS = [
     "Fresno", "Missouri City", "Sienna", "Arcola", "League City", "South Houston",
 ]
 
-LOGO = """<a class="logo" href="index.html" aria-label="Kreme Cruiser home">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="5.5" cy="18" r="3"/><circle cx="18.5" cy="18" r="3"/>
-            <path d="M8.5 18h7"/><path d="M6 18 9 8h8l2 10"/><path d="M8 8h10"/>
-          </svg>
-        </span>
-        <span class="logo-type"><b>Kreme Cruiser</b><span>Shaved Ice Cart</span></span>
+LOGO = """<a class="logo" href="index.html">
+        <img src="assets/img/kreme-cruiser-logo.png"
+             srcset="assets/img/kreme-cruiser-logo.png 1x, assets/img/kreme-cruiser-logo@2x.png 2x, assets/img/kreme-cruiser-logo@3x.png 3x"
+             width="91" height="56" alt="Kreme Cruiser" decoding="async">
       </a>"""
 
 
@@ -125,6 +121,9 @@ ORG_SCHEMA = """{
   "alternateName": "Kreme Cruiser Shaved Ice",
   "description": "Kreme Cruiser is a mobile shaved ice cart serving schools, daycares, birthday parties, church events and community gatherings in the south Houston area of Texas.",
   "url": "%(site)s/",
+  "telephone": "+1-713-530-6835",
+  "email": "info@kremecruiser.com",
+  "sameAs": ["https://www.instagram.com/kreme_cruiser/"],
   "image": "%(site)s/assets/img/og-kreme-cruiser.jpg",
   "servesCuisine": "Shaved ice",
   "priceRange": "$$",
@@ -165,6 +164,52 @@ def breadcrumbs(trail):
     jsonld = ('{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":['
               + ",".join(ld) + "]}")
     return html, jsonld
+
+
+SMALL_WORDS = {
+    "a", "an", "and", "as", "at", "but", "by", "for", "from", "in", "nor",
+    "of", "on", "onto", "or", "per", "so", "the", "to", "up", "via",
+    "with", "yet",
+}
+
+_TOKEN = re.compile(r"[A-Za-z][A-Za-z'’]*")
+
+
+def _title_case_headings(html):
+    """Title case the text inside h1, h2 and h3 tags, leaving tags,
+    entities and existing acronyms untouched."""
+
+    def fix_heading(match):
+        open_tag, inner, close_tag = match.group(1), match.group(2), match.group(3)
+        # split into pieces: html tags, entities, and plain text
+        pieces = re.split(r"(<[^>]+>|&[A-Za-z#0-9]+;)", inner)
+        words = []
+        for i, piece in enumerate(pieces):
+            if i % 2 == 1:
+                continue
+            words.extend((i, m) for m in _TOKEN.finditer(piece))
+        total = len(words)
+        edits = {}
+        for n, (piece_i, m) in enumerate(words):
+            word = m.group(0)
+            if word.isupper() and len(word) > 1:
+                continue  # acronym such as PTO or FAQ
+            lower = word.lower()
+            first_or_last = (n == 0 or n == total - 1)
+            new = word.capitalize() if (first_or_last or lower not in SMALL_WORDS) else lower
+            if new != word:
+                edits.setdefault(piece_i, []).append((m.start(), m.end(), new))
+        for piece_i, changes in edits.items():
+            text = pieces[piece_i]
+            for start, end, new in reversed(changes):
+                text = text[:start] + new + text[end:]
+            pieces[piece_i] = text
+        return open_tag + "".join(pieces) + close_tag
+
+    return re.sub(r"(<(h[123])\b[^>]*>)(.*?)(</\2>)",
+                  lambda m: fix_heading(re.match(r"(<h[123]\b[^>]*>)(.*)(</h[123]>)",
+                                                 m.group(0), re.S)),
+                  html, flags=re.S)
 
 
 PAGE = """<!doctype html>
@@ -231,6 +276,7 @@ def build(slug, title, description, body, trail=None, extra_schema=(), robots="i
         body=body,
         footer=FOOTER,
     )
+    html = _title_case_headings(html)
     with open(os.path.join(ROOT, slug), "w", encoding="utf-8") as fh:
         fh.write(html)
     return slug

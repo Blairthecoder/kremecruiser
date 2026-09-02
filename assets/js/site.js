@@ -6,8 +6,8 @@
  * ----------------------------------------------------------------- */
 
 var CONTACT = {
-  phone:     "",                      // e.g. "(281) 555-0134"
-  email:     "",                      // e.g. "hello@kremecruiser.com"
+  phone:     "(713) 530-6835",
+  email:     "info@kremecruiser.com",
   facebook:  "",                      // full URL to the Facebook page
   instagram: "https://www.instagram.com/kreme_cruiser/",
   tiktok:    ""                       // full URL, optional
