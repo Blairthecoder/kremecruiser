@@ -184,9 +184,9 @@ Taken from the owner's own materials, not invented:
 The inquiry form at `contact.html` mirrors the field set of the business's
 Jotform catering inquiry, so submissions arrive with the same information.
 The Service style and Event type dropdowns use the business's own options.
-One item is still worth confirming: whether the flavor list should also
-include Blueberry and Cherry, which appear on the flyer but not on the
-inquiry form.
+Where the flyer and the inquiry form disagreed on flavors, the inquiry form
+is authoritative: it is the list the business actually books from, so
+Blueberry and Cherry from the flyer are deliberately not on the site.
 
 ### Logo and icons
 

@@ -123,7 +123,7 @@ ORG_SCHEMA = """{
   "url": "%(site)s/",
   "telephone": "+1-713-530-6835",
   "email": "info@kremecruiser.com",
-  "sameAs": ["https://www.instagram.com/kreme_cruiser/"],
+  "sameAs": ["https://www.instagram.com/kreme_cruiser/", "https://www.facebook.com/p/Kreme-Cruiser-61588605541964/"],
   "image": "%(site)s/assets/img/og-kreme-cruiser.jpg",
   "servesCuisine": "Shaved ice",
   "priceRange": "$$",
