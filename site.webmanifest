@@ -1,0 +1,13 @@
+{
+  "name": "Kreme Cruiser",
+  "short_name": "Kreme Cruiser",
+  "description": "Mobile shaved ice cart serving schools, daycares, parties and community events in the south Houston area.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#14b6cf",
+  "icons": [
+    { "src": "/assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
