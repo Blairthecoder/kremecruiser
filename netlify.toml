@@ -10,10 +10,24 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
+# Images are content-stable and safe to pin for a year.
 [[headers]]
-  for = "/assets/*"
+  for = "/assets/img/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# CSS and JS are requested with a ?v= content hash, so a new build is a new
+# URL. The short max-age is a safety net for any request without the hash:
+# without it a stale copy would be pinned in browsers for a year.
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
 
 [[redirects]]
   from = "/index"

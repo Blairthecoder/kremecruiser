@@ -6,12 +6,28 @@ metadata stay consistent. Run `python3 tools/build.py` after editing this
 file, then commit the generated .html files.
 """
 
+import hashlib
 import os
 import re
 
 SITE_URL = "https://kreme-cruiser.netlify.app"
 BRAND = "Kreme Cruiser"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+def _asset_version(relpath):
+    """Content hash for a cache-busted asset URL.
+
+    assets/* is served with a one year immutable cache, so a stable URL
+    would pin visitors to whatever copy they downloaded first. Hashing the
+    URL means new content is always a new URL.
+    """
+    full = os.path.join(ROOT, relpath)
+    with open(full, "rb") as fh:
+        return hashlib.md5(fh.read()).hexdigest()[:10]
+
+
+CSS_V = _asset_version("assets/css/style.css")
+JS_V = _asset_version("assets/js/site.js")
 
 NAV = [
     ("index.html", "Home"),
@@ -57,7 +73,7 @@ def header(slug):
         items.append(f'<li><a href="{href}"{current}>{label}</a></li>')
     items.append('<li class="nav-phone" data-contact-item hidden>'
                  '<a data-contact="phone" href="#">'
-                 '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                 '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
                  '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/>'
                  '</svg><span data-contact-text>Phone</span></a></li>')
     items.append('<li class="nav-cta"><a href="contact.html">Book the Cart</a></li>')
@@ -67,7 +83,7 @@ def header(slug):
       {LOGO}
       <div class="header-actions">
         <a class="header-call" data-contact="phone" href="#" data-contact-item hidden aria-label="Call Kreme Cruiser">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
           <span class="visually-hidden">Call</span>
         </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -245,8 +261,10 @@ PAGE = """<!doctype html>
 <meta name="theme-color" content="#14b6cf">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="assets/css/style.css?v={css_v}">
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -261,7 +279,7 @@ PAGE = """<!doctype html>
 {body}
 </main>
 {footer}
-<script src="assets/js/site.js"></script>
+<script src="assets/js/site.js?v={js_v}"></script>
 </body>
 </html>
 """
@@ -283,6 +301,8 @@ def build(slug, title, description, body, trail=None, extra_schema=(), robots="i
         robots=robots,
         org=ORG_SCHEMA,
         extra_schema=extra,
+        css_v=CSS_V,
+        js_v=JS_V,
         header=header(slug),
         crumbs=crumb_html,
         body=body,
