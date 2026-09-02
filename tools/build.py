@@ -9,7 +9,7 @@ file, then commit the generated .html files.
 import os
 import re
 
-SITE_URL = "https://www.kremecruiser.com"
+SITE_URL = "https://kreme-cruiser.netlify.app"
 BRAND = "Kreme Cruiser"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
