@@ -68,11 +68,11 @@ def flavor_list(items):
 home_body = f"""  <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Mobile shaved ice &middot; South Houston area</span>
-        <h1>The shaved ice cart that <span class="accent">comes to you</span></h1>
-        <p class="hero-lede">Kreme Cruiser is a pedal powered shaved ice cart. We roll up to schools, daycares, birthday parties, church events and neighborhood block parties, set up in a few minutes and start handing out cups.</p>
+        <span class="eyebrow">Mobile water ice &middot; South Houston area</span>
+        <h1>The water ice cart that <span class="accent">comes to you</span></h1>
+        <p class="hero-lede">Kreme Cruiser is a pedal powered water ice cart. We roll up to schools, daycares, birthday parties, church events and neighborhood block parties, set up in a few minutes and start handing out cups.</p>
         <ul class="hero-points">
-          <li>Thirteen flavors and combos, including a rainbow and a mystery cup</li>
+          <li>Seventeen water ice flavors, every one of them dairy free</li>
           <li>Fits indoors or outdoors, no generator noise and no fumes</li>
           <li>Friendly servers in uniform who keep the line moving</li>
           <li>We bring the cart, cups, spoons, napkins and cleanup</li>
@@ -83,11 +83,26 @@ home_body = f"""  <section class="hero">
         </div>
       </div>
       <div class="hero-photo">
-        {picture("cart-menu-board", "The Kreme Cruiser shaved ice cart set up on a school lawn under a teal umbrella next to its flavor menu board", sizes="(max-width: 860px) 90vw, 500px", loading="eager")}
+        {picture("cart-menu-board", "The Kreme Cruiser water ice cart set up on a school lawn under a teal umbrella next to its flavor menu board", sizes="(max-width: 860px) 90vw, 500px", loading="eager")}
       </div>
     </div>
   </section>
 
+
+  <section class="trust-bar">
+    <div class="wrap">
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div><b>Seventeen flavors</b><span>Every one dairy free, no alcohol</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <div><b>$6 small, $9 large</b><span>Cup pricing published up front</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="18" r="3"/><circle cx="18.5" cy="18" r="3"/><path d="M8.5 18h7"/><path d="M6 18 9 8h8l2 10"/><path d="M8 8h10"/></svg>
+          <div><b>Indoors or outdoors</b><span>Pedal powered, no generator</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <div><b>Staffed service</b><span>Uniformed servers run the line</span></div></li>
+      </ul>
+    </div>
+  </section>
   <section class="section">
     <div class="wrap">
       <div class="section-head center">
@@ -123,14 +138,14 @@ home_body = f"""  <section class="hero">
       <div class="split">
         <div>
           <span class="eyebrow">The flavors</span>
-          <h2>Seven single flavors and six mix and match cups</h2>
-          <p>Everything is poured over freshly shaved ice, so it stays light and it does not turn into a sticky puddle the way a syrup soaked cone does. Kids who cannot decide go straight for the Rainbow or the Mystery cup.</p>
-          <p>All flavors are dairy free. Pi&ntilde;a Colada and Orange Creamsicle taste creamy but there is no alcohol and no dairy in the cart.</p>
+          <h2>Seventeen flavors, all dairy free</h2>
+          <p>Handcrafted water ice, shaved fine so the flavor holds all the way through the cup instead of running out the bottom like a syrup soaked cone. Rainbow is the one most kids point at first.</p>
+          <p>Pi&ntilde;a Colada and Orange Creamsicle taste creamy, but there is no dairy and no alcohol anywhere on the cart. Cups are $6 small and $9 large.</p>
           <div class="btn-row mt-32">
             <a class="btn btn-secondary" href="flavors.html">See the full menu</a>
           </div>
         </div>
-        <div>{picture("rainbow-shaved-ice", "A cup of rainbow shaved ice with red, yellow, green and blue layers on the Kreme Cruiser cart", sizes="(max-width: 860px) 90vw, 500px")}</div>
+        <div>{picture("rainbow-shaved-ice", "A cup of rainbow water ice with red, yellow, green and blue layers on the Kreme Cruiser cart", sizes="(max-width: 860px) 90vw, 500px")}</div>
       </div>
     </div>
   </section>
@@ -158,8 +173,8 @@ home_body = f"""  <section class="hero">
         <p class="lede">Summer camps, school lawns, indoor party halls and community fundraisers. Indoors or outdoors, the setup is the same.</p>
       </div>
       <div class="photo-strip">
-        <figure>{picture("daycare-shaved-ice-party", "Children seated around a table at a daycare eating cups of shaved ice", widths=(600, 1000), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Summer camp treat day</figcaption></figure>
-        <figure>{picture("kreme-cruiser-team-event", "Two Kreme Cruiser servers in matching shirts holding cups of shaved ice in front of the cart at an indoor event", widths=(600, 1000), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Indoor community event</figcaption></figure>
+        <figure>{picture("daycare-shaved-ice-party", "Children seated around a table at a daycare eating cups of water ice", widths=(600, 1000), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Summer camp treat day</figcaption></figure>
+        <figure>{picture("kreme-cruiser-team-event", "Two Kreme Cruiser servers in matching shirts holding cups of water ice in front of the cart at an indoor event", widths=(600, 1000), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Indoor community event</figcaption></figure>
         <figure>{picture("kids-school-event", "Two boys holding cups of water ice in front of the Kreme Cruiser cart at a school event", widths=(600, 725), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>School celebration</figcaption></figure>
         <figure>{picture("cart-neighborhood-ride", "The Kreme Cruiser cart being pedaled down a residential street", widths=(546,), sizes="(max-width: 860px) 45vw, 260px")}<figcaption>Rolling into the neighborhood</figcaption></figure>
       </div>
@@ -172,7 +187,7 @@ home_body = f"""  <section class="hero">
   <section class="section">
     <div class="wrap">
       <div class="split">
-        <div>{picture("kreme-cruiser-team-event", "Kreme Cruiser servers in branded shirts serving shaved ice at an indoor event", sizes="(max-width: 860px) 90vw, 500px")}</div>
+        <div>{picture("kreme-cruiser-team-event", "Kreme Cruiser servers in branded shirts serving water ice at an indoor event", sizes="(max-width: 860px) 90vw, 500px")}</div>
         <div>
           <span class="eyebrow">Why the cart works</span>
           <h2>Built for places a food truck cannot go</h2>
@@ -186,6 +201,36 @@ home_body = f"""  <section class="hero">
     </div>
   </section>
 
+  <section class="section section-shell">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Who books the cart</span>
+        <h2>The places we show up</h2>
+        <p class="lede">Every one of these is a booking we actually work, not a list of things we could imagine doing.</p>
+      </div>
+      <ul class="venues">
+        <li>Elementary schools</li><li>Daycares</li><li>Summer camps</li>
+        <li>Birthday parties</li><li>Churches</li><li>Nonprofit events</li>
+        <li>HOA and neighborhood nights</li><li>Corporate appreciation days</li>
+        <li>Community festivals</li><li>Grand openings</li>
+      </ul>
+      <div class="center" style="margin-top:34px;">
+        <h3>Follow the cart</h3>
+        <p class="lede" style="max-width:44em;margin:0 auto;">See where the Kreme Cruiser is parked this week, and what the cups look like before you book.</p>
+        <div class="social-row">
+          <a class="social-btn" data-contact="instagram" href="#" rel="noopener" data-contact-item hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            Instagram
+          </a>
+          <a class="social-btn" data-contact="facebook" href="#" rel="noopener" data-contact-item hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {cta("Ready to get the cart on your calendar?", "Send your date, location and headcount. We will confirm whether the cart is open and send you a quote.")}
 """
 
@@ -193,7 +238,7 @@ home_body = f"""  <section class="hero">
 services_body = f"""  <section class="page-head">
     <div class="wrap narrow">
       <span class="eyebrow">Services</span>
-      <h1>Mobile shaved ice catering for events of any size</h1>
+      <h1>Mobile water ice catering for events of any size</h1>
       <p class="lede">One cart, one flavor menu, three ways to run it. Pick the setup that matches your crowd and we will handle the rest.</p>
       <div class="btn-row mt-32"><a class="btn btn-primary" href="contact.html">Check Your Date</a></div>
     </div>
@@ -231,8 +276,8 @@ services_body = f"""  <section class="page-head">
         <div class="card">
           <h3>We bring</h3>
           <ul>
-            <li>The shaved ice cart, shade umbrella and A frame flavor menu</li>
-            <li>Ice, all thirteen flavors and combos</li>
+            <li>The water ice cart, shade umbrella and A frame flavor menu</li>
+            <li>Ice and your selected flavors from the full menu of seventeen</li>
             <li>Cups, spoons and napkins</li>
             <li>Uniformed servers to run the line</li>
             <li>Hand sanitizer and a trash plan for our own service area</li>
@@ -284,7 +329,7 @@ services_body = f"""  <section class="page-head">
 schools_body = f"""  <section class="page-head">
     <div class="wrap narrow">
       <span class="eyebrow">Schools &amp; Daycares</span>
-      <h1>Shaved ice for schools, daycares and summer camps</h1>
+      <h1>Water ice for schools, daycares and summer camps</h1>
       <p class="lede">Field day, reward day, graduation, teacher appreciation and camp weeks. We serve fast, we serve clean and we work around your schedule instead of running over it.</p>
       <div class="btn-row mt-32"><a class="btn btn-primary" href="contact.html?event=School%20or%20daycare">Check Your Date</a></div>
     </div>
@@ -338,7 +383,7 @@ schools_body = f"""  <section class="page-head">
 birthday_body = f"""  <section class="page-head">
     <div class="wrap narrow">
       <span class="eyebrow">Birthday Parties</span>
-      <h1>Shaved ice cart rental for birthday parties</h1>
+      <h1>Water ice cart rental for birthday parties</h1>
       <p class="lede">The cart rolls into the backyard, the driveway, the park pavilion or the clubhouse. Kids line up, pick a flavor, and you are not the one scooping.</p>
       <div class="btn-row mt-32"><a class="btn btn-primary" href="contact.html?event=Birthday%20party">Check Your Date</a></div>
     </div>
@@ -395,7 +440,7 @@ birthday_body = f"""  <section class="page-head">
 community_body = f"""  <section class="page-head">
     <div class="wrap narrow">
       <span class="eyebrow">Community &amp; Corporate</span>
-      <h1>Shaved ice for community events, churches and company days</h1>
+      <h1>Water ice for community events, churches and company days</h1>
       <p class="lede">Fundraisers, church events, HOA nights, grand openings, vendor markets and staff appreciation. We can serve a set cup count or run open service for a fixed window.</p>
       <div class="btn-row mt-32"><a class="btn btn-primary" href="contact.html?event=Community%20or%20corporate">Check Your Date</a></div>
     </div>
@@ -553,7 +598,7 @@ about_body = f"""  <section class="page-head">
     <div class="wrap narrow">
       <span class="eyebrow">About</span>
       <h1>About Kreme Cruiser</h1>
-      <p class="lede">A locally owned shaved ice cart serving the south Houston area. Small setup, real service, and a flavor board kids can read from across the yard.</p>
+      <p class="lede">A locally owned water ice cart serving the south Houston area. Small setup, real service, and a flavor board kids can read from across the yard.</p>
     </div>
   </section>
 
@@ -568,7 +613,7 @@ about_body = f"""  <section class="page-head">
           <p>We show up early enough to be ready before your start time. Servers wear branded shirts so guests know who to walk up to. We keep the serving area clean while we work, and when service ends we pack out and take our own trash with us.</p>
           <p>If you tell us a headcount, we bring enough for that headcount. If you tell us a time window, we hold that window. That is most of what event hosts actually want from a vendor.</p>
         </div>
-        <div>{picture("kreme-cruiser-team-event", "Kreme Cruiser servers in matching branded shirts standing in front of the shaved ice cart", sizes="(max-width: 860px) 90vw, 500px")}</div>
+        <div>{picture("kreme-cruiser-team-event", "Kreme Cruiser servers in matching branded shirts standing in front of the water ice cart", sizes="(max-width: 860px) 90vw, 500px")}</div>
       </div>
     </div>
   </section>
@@ -657,13 +702,13 @@ gallery_body = f"""  <section class="page-head">
 # ----------------------------------------------------------------- FAQ
 FAQ_ITEMS = [
     ("What is Kreme Cruiser?",
-     "Kreme Cruiser is a mobile shaved ice cart serving the south Houston area. The cart is a pedal powered trike with a shade umbrella and a flavor menu board. We bring it to schools, daycares, birthday parties, church events and community gatherings."),
+     "Kreme Cruiser is a mobile water ice cart serving the south Houston area. The cart is a pedal powered trike with a shade umbrella and a flavor menu board. We bring it to schools, daycares, birthday parties, church events and community gatherings."),
     ("How far in advance should I book?",
      "As early as you can, especially for spring and summer Saturdays and for school field days. Those dates fill first. If your date is flexible, tell us and we will show you what is open."),
     ("What areas do you serve?",
      "Pearland, Manvel, Rosharon, Iowa Colony, Alvin, Friendswood, Fresno, Missouri City, Sienna, Arcola, League City, South Houston and the neighborhoods in between. Events outside that area may add a travel fee, which we quote up front."),
     ("How many flavors are there?",
-     "Seven single flavors and six mix and match combinations, including a Rainbow cup and a Mystery cup. The full list is on the flavor menu page."),
+     "Seventeen, including Rainbow, Cotton Candy, Blue Razz and Pistachio. The number included with your event depends on the package you book, and extra flavors can be added for a small charge. The full list is on the flavor menu page."),
     ("Is there dairy or alcohol in any flavor?",
      "No. Every flavor on the cart is dairy free, and there is no alcohol in any of them. Pi&ntilde;a Colada and Orange Creamsicle taste creamy but contain neither."),
     ("Can you set up indoors?",
@@ -675,11 +720,13 @@ FAQ_ITEMS = [
     ("How long does setup take?",
      "About fifteen minutes. We arrive early enough to be fully ready before your service start time."),
     ("What does it cost?",
-     "Pricing depends on your headcount, your service window and your location. Send those three things with your date and we will send a quote rather than a range."),
+     "Cups are $6 for a small and $9 for a large. Your event total depends on headcount, service window and location, so send those three things with your date and we will send a real quote rather than a range."),
     ("Can you serve a school with several hundred students?",
      "Often yes, with rotation service and enough time. Tell us your total count and the window you have and we will tell you honestly whether one cart can cover it."),
     ("What happens if it rains?",
      "We talk about it before the event. Most hosts either move service indoors or set a rain date. Let us know at booking which one you plan to use."),
+    ("How do I secure my date?",
+     "A 50% non-refundable retainer holds your event date. Until that retainer is received the date stays open to other bookings."),
     ("Do you do recurring bookings?",
      "Yes. Daycares, camps and after school programs can hold a recurring slot for a season instead of booking one date at a time."),
     ("Can you provide invoicing or vendor paperwork?",
@@ -950,43 +997,43 @@ H = ("index.html", "Home")
 
 PAGES = [
     dict(slug="index.html",
-         title="Kreme Cruiser | Mobile Shaved Ice Cart, South Houston",
-         description="A pedal powered shaved ice cart for schools, daycares, birthdays and community events around Pearland, Manvel and Rosharon. Check your date.",
+         title="Kreme Cruiser | Mobile Water Ice Cart, South Houston",
+         description="A pedal powered water ice cart for schools, daycares, birthdays and community events around Pearland, Manvel and Rosharon. Check your date.",
          body=home_body, trail=None),
     dict(slug="services.html",
-         title="Shaved Ice Catering Services | Kreme Cruiser",
-         description="Mobile shaved ice catering for schools, birthday parties and community events. See what comes with the cart, how service runs and what your venue needs.",
+         title="Water Ice Catering Services | Kreme Cruiser",
+         description="Mobile water ice catering for schools, birthday parties and community events. See what comes with the cart, how service runs and what your venue needs.",
          body=services_body, trail=[H, ("services.html", "Services")]),
     dict(slug="schools-and-daycares.html",
-         title="Shaved Ice for Schools &amp; Daycares | Kreme Cruiser",
+         title="Water Ice for Schools &amp; Daycares | Kreme Cruiser",
          description="Field days, reward days, graduations and camp weeks. Rotation service that fits your bell schedule, indoors or out, across the south Houston area.",
          body=schools_body,
          trail=[H, ("services.html", "Services"), ("schools-and-daycares.html", "Schools &amp; Daycares")]),
     dict(slug="birthday-parties.html",
-         title="Shaved Ice Cart Rental for Birthday Parties | Kreme Cruiser",
-         description="Book the Kreme Cruiser shaved ice cart for a birthday party in Pearland, Manvel, Rosharon or nearby. Backyards, driveways, parks and clubhouses.",
+         title="Water Ice Cart Rental for Birthday Parties | Kreme Cruiser",
+         description="Book the Kreme Cruiser water ice cart for a birthday party in Pearland, Manvel, Rosharon or nearby. Backyards, driveways, parks and clubhouses.",
          body=birthday_body,
          trail=[H, ("services.html", "Services"), ("birthday-parties.html", "Birthday Parties")]),
     dict(slug="community-and-corporate-events.html",
-         title="Shaved Ice for Community &amp; Corporate Events | Kreme Cruiser",
+         title="Water Ice for Community &amp; Corporate Events | Kreme Cruiser",
          description="Sponsored cups or timed open service for church events, fundraisers, HOA nights, grand openings and staff appreciation days in the south Houston area.",
          body=community_body,
          trail=[H, ("services.html", "Services"), ("community-and-corporate-events.html", "Community &amp; Corporate")]),
     dict(slug="flavors.html",
-         title="Shaved Ice Flavors | Kreme Cruiser Menu",
-         description="Seven single flavors and six mix and match cups, including Rainbow and Mystery. Every Kreme Cruiser flavor is dairy free with no alcohol.",
+         title="Water Ice Flavors | Kreme Cruiser Menu",
+         description="Seventeen water ice flavors including Rainbow, Cotton Candy and Blue Razz. Every Kreme Cruiser flavor is dairy free. Cups are $6 small, $9 large.",
          body=flavors_body, trail=[H, ("flavors.html", "Flavors")],
          extra_schema=[flavor_schema]),
     dict(slug="service-area.html",
-         title="Service Area | Kreme Cruiser Shaved Ice",
+         title="Service Area | Kreme Cruiser Water Ice",
          description="Kreme Cruiser serves Pearland, Manvel, Rosharon, Iowa Colony, Alvin, Fresno, Missouri City and nearby communities. Ask about travel outside the area.",
          body=area_body, trail=[H, ("service-area.html", "Service Area")]),
     dict(slug="gallery.html",
-         title="Photo Gallery | Kreme Cruiser Shaved Ice Cart",
-         description="Photos of the Kreme Cruiser shaved ice cart at schools, daycares, indoor community events and parties, plus close ups of the flavors.",
+         title="Photo Gallery | Kreme Cruiser Water Ice Cart",
+         description="Photos of the Kreme Cruiser water ice cart at schools, daycares, indoor community events and parties, plus close ups of the flavors.",
          body=gallery_body, trail=[H, ("gallery.html", "Gallery")]),
     dict(slug="about.html",
-         title="About Kreme Cruiser | Locally Owned Shaved Ice Cart",
+         title="About Kreme Cruiser | Locally Owned Water Ice Cart",
          description="Why Kreme Cruiser runs a cart instead of a truck, how we work an event, and what we care about: showing up on time, moving the line and leaving it clean.",
          body=about_body, trail=[H, ("about.html", "About")]),
     dict(slug="faq.html",
@@ -995,8 +1042,8 @@ PAGES = [
          body=faq_body, trail=[H, ("faq.html", "FAQ")],
          extra_schema=[faq_schema]),
     dict(slug="contact.html",
-         title="Book the Kreme Cruiser Shaved Ice Cart | Check Your Date",
-         description="Send your date, location and headcount and we will confirm availability and send a quote for the Kreme Cruiser shaved ice cart.",
+         title="Book the Kreme Cruiser Water Ice Cart | Check Your Date",
+         description="Send your date, location and headcount and we will confirm availability and send a quote for the Kreme Cruiser water ice cart.",
          body=contact_body, trail=[H, ("contact.html", "Book the Cart")]),
     dict(slug="thank-you.html",
          title="Request Received | Kreme Cruiser",

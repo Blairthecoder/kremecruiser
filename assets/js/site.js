@@ -27,11 +27,17 @@ var CONTACT = {
     if (!value) { holder.hidden = true; return; }
 
     holder.hidden = false;
+
+    // Only write text into a node that asks for it. Links that carry an
+    // icon keep their own markup.
+    var textTarget = node.querySelector("[data-contact-text]");
+    if (!textTarget && !node.firstElementChild) { textTarget = node; }
+
     if (key === "phone") {
-      node.textContent = value;
+      if (textTarget) { textTarget.textContent = value; }
       if (node.tagName === "A") { node.href = "tel:" + digits(value); }
     } else if (key === "email") {
-      node.textContent = value;
+      if (textTarget) { textTarget.textContent = value; }
       if (node.tagName === "A") { node.href = "mailto:" + value; }
     } else if (node.tagName === "A") {
       node.href = value;

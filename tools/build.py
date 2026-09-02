@@ -46,7 +46,7 @@ AREAS = [
 LOGO = """<a class="logo" href="index.html">
         <img src="assets/img/kreme-cruiser-logo.png"
              srcset="assets/img/kreme-cruiser-logo.png 1x, assets/img/kreme-cruiser-logo@2x.png 2x, assets/img/kreme-cruiser-logo@3x.png 3x"
-             width="58" height="64" alt="Kreme Cruiser" decoding="async">
+             width="77" height="84" alt="Kreme Cruiser" decoding="async">
       </a>"""
 
 
@@ -55,15 +55,26 @@ def header(slug):
     for href, label in NAV:
         current = ' aria-current="page"' if href == slug else ""
         items.append(f'<li><a href="{href}"{current}>{label}</a></li>')
+    items.append('<li class="nav-phone" data-contact-item hidden>'
+                 '<a data-contact="phone" href="#">'
+                 '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                 '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/>'
+                 '</svg><span data-contact-text>Phone</span></a></li>')
     items.append('<li class="nav-cta"><a href="contact.html">Book the Cart</a></li>')
     links = "\n            ".join(items)
     return f"""  <header class="site-header">
     <div class="wrap header-inner">
       {LOGO}
+      <div class="header-actions">
+        <a class="header-call" data-contact="phone" href="#" data-contact-item hidden aria-label="Call Kreme Cruiser">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <span class="visually-hidden">Call</span>
+        </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         Menu
       </button>
+      </div>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
             {links}
@@ -78,7 +89,7 @@ FOOTER = """  <footer class="site-footer">
       <div class="footer-grid">
         <div>
           {logo}
-          <p style="margin-top:16px;max-width:34ch;">A pedal powered shaved ice cart that rolls up to schools, daycares, birthday parties and community events across the south Houston area.</p>
+          <p style="margin-top:16px;max-width:34ch;">A pedal powered water ice cart that rolls up to schools, daycares, birthday parties and community events across the south Houston area.</p>
           <ul style="margin-top:18px;">
             <li data-contact-item hidden><a data-contact="phone" href="#">Phone</a></li>
             <li data-contact-item hidden><a data-contact="email" href="#">Email</a></li>
@@ -118,8 +129,8 @@ ORG_SCHEMA = """{
   "@type": "FoodEstablishment",
   "@id": "%(site)s/#business",
   "name": "Kreme Cruiser",
-  "alternateName": "Kreme Cruiser Shaved Ice",
-  "description": "Kreme Cruiser is a mobile shaved ice cart serving schools, daycares, birthday parties, church events and community gatherings in the south Houston area of Texas.",
+  "alternateName": "Kreme Cruiser Water Ice",
+  "description": "Kreme Cruiser is a mobile water ice cart serving schools, daycares, birthday parties, church events and community gatherings in the south Houston area of Texas.",
   "url": "%(site)s/",
   "telephone": "+1-713-530-6835",
   "email": "info@kremecruiser.com",
@@ -133,7 +144,7 @@ ORG_SCHEMA = """{
     "@type": "Offer",
     "itemOffered": {
       "@type": "Service",
-      "name": "Mobile shaved ice cart service",
+      "name": "Mobile water ice cart service",
       "serviceType": "Event catering"
     }
   }
@@ -229,7 +240,7 @@ PAGE = """<!doctype html>
 <meta property="og:image" content="{site}/assets/img/og-kreme-cruiser.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Kreme Cruiser shaved ice cart parked under a teal umbrella beside its flavor menu board">
+<meta property="og:image:alt" content="The Kreme Cruiser water ice cart parked under a teal umbrella beside its flavor menu board">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#14b6cf">
 <link rel="preconnect" href="https://fonts.googleapis.com">
